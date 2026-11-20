@@ -1,0 +1,29 @@
+[package]
+name = "c2000-jtag-studio"
+version = "2.0.0"
+edition = "2021"
+description = "Hardware-safe Classic White Eclipse JTAG Studio for TI TMS320F28069M and TMS320F28388D"
+
+[dependencies]
+eframe = { version = "0.28.1", default-features = false, features = ["default_fonts", "glow"] }
+egui = "0.28.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+flate2 = "1.1"
+xml-rs = "0.8"
+crc32fast = "1.5"
+png = "0.18"
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_JobObjects",
+    "Win32_System_Threading",
+    "Win32_Media",
+    "Win32_UI_Controls_Dialogs",
+] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
